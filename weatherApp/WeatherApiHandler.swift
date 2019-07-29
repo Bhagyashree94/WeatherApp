@@ -42,7 +42,6 @@ class WeatherApiHandler: NSObject, CLLocationManagerDelegate {
         getWeatherReport(completionHandler: { (weatherModel, error) in
             DispatchQueue.main.async {
                 guard let weather = weatherModel else { return }
-                debugPrint(weather)
                 self.delegate?.sendWeatherDetails(weatherData: weather)
             }
         })

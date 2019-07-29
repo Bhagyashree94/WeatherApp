@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var activityIndicator: NVActivityIndicatorView?
     var weatherApiHandler = WeatherApiHandler()
     var timer: Timer?
+    var hour = Calendar.current.component(.hour, from: Date())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +50,21 @@ class ViewController: UIViewController {
 //        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getWeatherData), userInfo: nil, repeats: true)
         
         weatherApiHandler.delegate = self
+        print("hour: \(hour)")
+        hour = 22
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setBlueGradientLayer()
+        switch hour {
+        case 1...20:
+            setBlueGradientLayer()
+        case 20...24:
+            setGrayGradientLayer()
+        default:
+            break
+        }
+        
     }
     
     func setWeather(weatherData: Weather) {

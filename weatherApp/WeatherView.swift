@@ -75,14 +75,11 @@ class WeatherView: UIView {
     public var image: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
         imageView.image = UIImage(named: "rain")
-        imageView.layer.borderColor = UIColor.black.cgColor
-        imageView.layer.borderWidth = 2
-        imageView.layer.cornerRadius = 20
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
         imageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
